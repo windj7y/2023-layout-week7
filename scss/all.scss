@@ -1,0 +1,226 @@
+@import 'reset';
+@import 'base';
+
+$primary: #FFF;
+$light: #D1D1D1;
+$dark: #000;
+$green: #00FFA3;
+$gray: #E3E3E3;
+$dark-gray: #15161D;
+
+$font-size: 16px;
+$space: 16px;
+
+$width: 86px;
+$gutter: 24px;
+
+$font-sizes: (
+  1: 8,
+  2: 4,
+  3: 2.5,
+  4: 2,
+  5: 1.5,
+  6: 1.25,
+);
+
+$spaces: (
+  1: $space * 0.25,
+  2: $space,
+  3: $space * 1.5,
+  4: $space * 1.75,
+  5: $space * 2,
+  6: $space * 2.25,    
+	7: $space * 2.5,
+	8: $space * 4.5,
+	9: $space * 6,
+	10: $space * 10,
+);
+
+$dimensions: (
+  'm': 'margin',
+  'p': 'padding',
+);
+
+$directions: (
+  't': 'top', 
+  'b': 'bottom', 
+  'l': 'left', 
+  'r': 'right',
+);
+
+@each $name, $value in $font-sizes {
+	.fs-#{$name} {
+		font-size: $font-size * $value;
+	}
+}
+
+@each $dim in $dimensions {
+	//迴圈四個方向
+	@each $dir in $directions {
+		@each $name, $value in $spaces {
+			.#{nth($dim,1)}#{nth($dir,1)}-#{$name} {
+				#{nth($dim,2)}-#{nth($dir,2)}: $value;
+			}
+		}
+	}
+}
+
+@for $i from 1 through 12 {
+  $total-width: $width * $i + $gutter * ($i - 1);
+  .col-#{$i} {
+    width: $total-width;
+  }
+}
+
+.py- {
+  &7 {
+    padding: 40px 0;
+  }
+
+  &8 {
+    padding: 72px 0;
+  }
+
+  &9 {
+    padding: 96px 0;
+  }
+
+  &10 {
+    padding: 160px 0;
+  }
+}
+
+.ml-auto {
+  margin-left: auto;
+}
+
+.bg- {
+  &dark {
+    background: $dark;
+  }
+
+  &gradient {
+    background: linear-gradient(180deg, #050014 0%, rgba(1, 2, 30, 0.89) 100%);
+  }
+
+  &img {
+    background: url(../img/background-img.png) no-repeat center / cover;
+  }
+}
+
+.text- {
+  &primary {
+    color: $primary;
+  }
+
+  &light {
+    color: $light;
+  }
+
+  &green {
+    color: $green;
+  }
+
+  &dark-gray {
+    color: $dark-gray;
+  }
+
+  &center {
+    text-align: center;
+  }
+
+  &right {
+    text-align: right;
+  }
+}
+
+.d-flex {
+  display: flex;
+}
+
+.justify-content-between {
+  justify-content: space-between;
+}
+
+.align-items-center {
+  align-items: center;
+}
+
+.flex-wrap {
+  flex-wrap: wrap;
+}
+
+.flex-column {
+  flex-direction: column;
+}
+
+.container {
+  width: 1296px;
+  margin: 0 auto;
+}
+
+.w- {
+  &185 {
+    width: 185px;
+  }
+
+  &746 {
+    width: 746px;
+  }
+
+  &25 {
+    width: 25%;
+  }
+}
+
+.nav-link {
+  color: $light;
+
+  &:hover {
+    color: $primary;
+  }
+}
+
+.btn {
+  padding: 12px 24px;
+  border-radius: 32px;
+
+  &-primary {
+    background: $primary;
+    color: $dark;
+
+    &:hover {
+      background: $light;
+      color: $primary;
+    }
+  }
+
+  &-dark {
+    background: $dark;
+    color: $primary;
+
+    &:hover {
+      background: $light;
+    }
+  }
+}
+
+.card {
+  padding: 16px;
+  color: $dark-gray;
+  border: 1px solid $gray;
+  box-shadow: 4px 4px 4px 0px rgba($dark, 0.08);
+}
+
+.arrow {
+  font-size: 100px;
+}
+
+.link-icon {
+  border-radius: 40px;
+  box-shadow: 0px 4px 4px 0px rgba($dark, 0.25);
+  
+  &:hover {
+    box-shadow: 0px 0px 16px 3px rgba(#9094FF, 0.9);
+  }
+}
